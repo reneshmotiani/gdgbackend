@@ -26,15 +26,17 @@ app.use((req, res) => {
 // Centralized error handler to catch any unhandled exceptions
 app.use((err, req, res, next) => {
   console.error(err);
-  res
-    .status(500)
-    .json({
-      error: "InternalServerError",
-      message: "An unexpected error occurred",
-    });
+  res.status(500).json({
+    error: "InternalServerError",
+    message: "An unexpected error occurred",
+  });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
