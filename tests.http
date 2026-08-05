@@ -1,0 +1,38 @@
+### Get all notes
+GET http://localhost:3000/api/notes
+
+### Get notes with filter
+GET http://localhost:3000/api/notes?category=work
+
+### Get a single note (Change ID as needed)
+GET http://localhost:3000/api/notes/1
+
+### Create a note
+POST http://localhost:3000/api/notes
+Content-Type: application/json
+
+{
+  "title": "Finish backend task",
+  "category": "work"
+}
+
+### Create a note (Bad Input - Validation Error)
+POST http://localhost:3000/api/notes
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+### Update a note via PUT (Full Replace)
+PUT http://localhost:3000/api/notes/1
+Content-Type: application/json
+
+{
+  "title": "Learn Express (Updated)",
+  "category": "work",
+  "completed": true
+}
+
+### Delete a note
+DELETE http://localhost:3000/api/notes/2
